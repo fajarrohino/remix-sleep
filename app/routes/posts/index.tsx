@@ -2,7 +2,6 @@ import { Box, Button, Center, Checkbox, FormControl, FormLabel, Input, Text } fr
 import { ActionArgs, redirect } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
 import { MdDelete } from "react-icons/md";
-// import { BsFillTrashFill } from "react-icons/bs";
 import { createPostSchema, updatePostSchema } from "../modules/posts/posts.schema";
 import { createPost, deletePost, getPosts, updatePost } from "../modules/posts/posts.services";
 import FormPost from "./component/FormPost";
