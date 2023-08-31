@@ -12,5 +12,5 @@ datasource db {
 model Post {
   id        Int     @id @default(autoincrement())
   title     String  @db.VarChar(255)
-  isDone    Boolean @db.Boolean
+  isDone    Boolean @db.Boolean @default(false)
 }
