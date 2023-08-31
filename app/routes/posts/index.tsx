@@ -1,11 +1,11 @@
 import { Box, Button, Center, Checkbox, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { ActionArgs, redirect } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
-import { AiFillCheckSquare, AiOutlineCheckSquare } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 // import { BsFillTrashFill } from "react-icons/bs";
 import { createPostSchema, updatePostSchema } from "../modules/posts/posts.schema";
 import { createPost, deletePost, getPosts, updatePost } from "../modules/posts/posts.services";
+import FormPost from "./component/FormPost";
 
 export async function loader() {
   return await getPosts();
@@ -58,14 +58,7 @@ export default function PostIndex() {
       <Box m={"50px"}>
         <Center>
           <Box width={"900px"}>
-            <Form method="post">
-              <FormControl display={"flex"} gap={3}>
-                <Input type="text" name="title" autoFocus />
-                <Button type="submit" colorScheme="whatsapp" bgColor={"green"}>
-                  add
-                </Button>
-              </FormControl>
-            </Form>
+            <FormPost />
             <Center m={2}>
               <Text fontSize={"xl"} fontWeight={"bold"}>
                 To Do List
@@ -113,50 +106,5 @@ export default function PostIndex() {
         </Center>
       </Box>
     </>
-    // <>
-    //   <Box margin="30px">
-    //     <Form method="post">
-    //       <FormControl display={"flex"} gap={3}>
-    //         <Input type="text" name="title" autoFocus />
-    //         <Button type="submit" colorScheme="whatsapp" bgColor={"green"}>
-    //           add
-    //         </Button>
-    //       </FormControl>
-    //     </Form>
-    //     <Box display="flex" width="100%" flexDirection="column" padding="20px">
-    //       <Text>I promise to accomplish this : </Text>
-    //       <UnorderedList listStyleType="none">
-    //         {data.map((post) => (
-    //           <ListItem key={post.id} display="flex" alignItems="center" gap={2} marginBottom="5px">
-    //             <Box display="flex" alignItems={"center"} flex={10} gap={2}>
-    //               <Form method="PATCH">
-    //                 <Input type="hidden" name="id" value={post.id} />
-    //                 <Input type="hidden" name="isDone" value={post.isDone?.toString()} />
-    //                 {post.isDone ? (
-    //                   <Button type="submit" variant={"ghost"}>
-    //                     <AiFillCheckSquare style={{ color: "green" }} />
-    //                   </Button>
-    //                 ) : (
-    //                   <Button type="submit" variant={"ghost"}>
-    //                     <AiOutlineCheckSquare style={{ color: "green" }} />
-    //                   </Button>
-    //                 )}
-    //               </Form>
-    //               <Text>{post.title}</Text>
-    //             </Box>
-    //             <Box display="flex" flex={2} justifyContent="flex-end">
-    //               <Form method="DELETE">
-    //                 <Input type="hidden" name="id" value={post.id} />
-    //                 <Button type="submit" colorScheme="red">
-    //                   <BsFillTrashFill style={{ color: "white" }} />
-    //                 </Button>
-    //               </Form>
-    //             </Box>
-    //           </ListItem>
-    //         ))}
-    //       </UnorderedList>
-    //     </Box>
-    //   </Box>
-    // </>
   );
 }
