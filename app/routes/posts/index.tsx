@@ -1,10 +1,11 @@
 import { Box, Button, Center, Checkbox, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { ActionArgs, redirect } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
+import { Form, useLoaderData, useNavigation } from "@remix-run/react";
 import { MdDelete } from "react-icons/md";
-import { createPostSchema, updatePostSchema } from "../modules/posts/posts.schema";
-import { createPost, deletePost, getPosts, updatePost } from "../modules/posts/posts.services";
+import { createPostSchema, updateCeklisSchema, updateTitleSchema } from "../modules/posts/posts.schema";
+import { createPost, deletePost, getPosts, updateCeklisPost, updateTitlePost } from "../modules/posts/posts.services";
 import FormPost from "./component/FormPost";
+import { useEffect, useRef } from "react";
 
 export async function loader() {
   return await getPosts();
@@ -35,16 +36,26 @@ export async function action({ request }: ActionArgs) {
     const formData = await request.formData();
 
     const id = +(formData.get("id") as string);
+    const title = formData.get("title") as string;
     const isDone = (formData.get("isDone") as string) === "true" ? false : true;
 
     console.log(id, isDone);
 
-    const validatedData = updatePostSchema.parse({
-      id,
-      isDone,
-    });
+    if (!title) {
+      const validatedData = updateCeklisSchema.parse({
+        id,
+        isDone,
+      });
 
-    updatePost(validatedData);
+      await updateCeklisPost(validatedData);
+    } else {
+      const validatedData = updateTitleSchema.parse({
+        id,
+        title,
+      });
+
+      await updateTitlePost(validatedData);
+    }
   }
 
   return redirect("/posts");
@@ -52,6 +63,11 @@ export async function action({ request }: ActionArgs) {
 
 export default function PostIndex() {
   const data = useLoaderData<typeof loader>();
+  const { state } = useNavigation();
+  const formRef = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    if (state === "submitting") formRef.current?.reset();
+  }, [state]);
   return (
     <>
       <Box m={"50px"}>
@@ -80,18 +96,18 @@ export default function PostIndex() {
                 </Form>
                 <Text fontWeight={"lg"}>{d.title}</Text>
                 <Box display={"flex"} justifyContent={"flex-end"} gap={2}>
-                  <Form>
-                    <FormControl display="flex" alignItems={"center"}>
+                  {/* update title */}
+                  <Form method="PATCH" ref={formRef}>
+                    <FormControl display="flex" alignItems={"center"} gap={2}>
                       <FormLabel>Edit</FormLabel>
-                      <Input type="text" placeholder={d.title} />
+                      <Input type="hidden" name="id" value={d.id} />
+                      <Input type="text" name="title" placeholder={d.title} />
+                      <Button type="submit" bgColor="orange">
+                        {state === "submitting" ? "Editing..." : "Edit"}
+                      </Button>
                     </FormControl>
                   </Form>
-                  <Form method="PATCH">
-                    <Input type="hidden" name="id" value={d.id} />
-                    <Button type="submit" bgColor="orange">
-                      Submit
-                    </Button>
-                  </Form>
+                  {/* delete */}
                   <Form method="DELETE">
                     <Input type="hidden" name="id" value={d.id} />
                     <Button type="submit" bgColor="red">
