@@ -1,4 +1,4 @@
-import { Button, Container, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import { Button, Container, Heading, Stack, Text } from "@chakra-ui/react";
 import type { V2_MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
@@ -24,18 +24,18 @@ export default function Index() {
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex ab quasi reprehenderit vel, placeat ducimus maiores velit eius eos, autem odit libero repellat, debitis corrupti ea pariatur quis sapiente magni?
           </Text>
           <Stack spacing={6} direction={"row"}>
-            <Link to={"auth"}>
+            <Link to={"signup"}>
               <Button rounded={"full"} px={6} colorScheme={"orange"} bg={"orange.400"} _hover={{ bg: "orange.500" }}>
                 Register
               </Button>
             </Link>
-            <Link to={"auth"}>
+            <Link to={"login"}>
               <Button rounded={"full"} px={6}>
                 Login
               </Button>
             </Link>
           </Stack>
-          <Flex w={"full"}>{/* <Illustration height={{ sm: "24rem", lg: "28rem" }} mt={{ base: 12, sm: 16 }} /> */}</Flex>
+          <Text fontSize={"xl"}>Eannoy</Text>
         </Stack>
       </Container>
     </>

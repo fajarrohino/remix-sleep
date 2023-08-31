@@ -1,4 +1,4 @@
-import { Box, Button, Center, Checkbox, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Checkbox, FormControl, FormLabel, Input, Text, Heading } from "@chakra-ui/react";
 import { ActionArgs, redirect } from "@remix-run/node";
 import { Form, useLoaderData, useNavigation } from "@remix-run/react";
 import { MdDelete } from "react-icons/md";
@@ -74,10 +74,13 @@ export default function PostIndex() {
         <Center>
           <Box width={"900px"}>
             <FormPost />
-            <Center m={2}>
-              <Text fontSize={"xl"} fontWeight={"bold"}>
-                To Do List
-              </Text>
+            <Center my={"30px"}>
+              <Heading fontSize={"3xl"} fontWeight={"bold"}>
+                Aktivitas hari ini{" "}
+                <Text as={"span"} color={"orange.400"}>
+                  Sebelum Tidur
+                </Text>
+              </Heading>
             </Center>
             {data.map((d) => (
               <Box display={"flex"} alignItems={"center"} justifyContent={"space-between"} m={5} key={d.id}>
