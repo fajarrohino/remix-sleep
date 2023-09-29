@@ -31,6 +31,7 @@
     "@remix-run/dev": "^1.19.3",
     "@remix-run/eslint-config": "^1.19.3",
     "@remix-run/serve": "^1.19.3",
+    "@types/bcryptjs": "^2.4.3",
     "@types/node": "^20.5.7",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",

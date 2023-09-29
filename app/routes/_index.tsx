@@ -35,7 +35,7 @@ export default function Index() {
               </Button>
             </Link>
           </Stack>
-          <Text fontSize={"xl"}>Eannoy</Text>
+          <Text fontSize={"xl"}>Eannoy ❤ 2023</Text>
         </Stack>
       </Container>
     </>

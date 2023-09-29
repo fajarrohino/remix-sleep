@@ -14,3 +14,10 @@ model Post {
   title     String  @db.VarChar(255)
   isDone    Boolean @db.Boolean @default(false)
 }
+
+model User {
+  id          Int     @id @default(autoincrement())
+  username    String  @db.VarChar(255)
+  email       String  @unique
+  password    String  @db.VarChar(255)
+}
