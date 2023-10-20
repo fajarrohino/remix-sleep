@@ -21,7 +21,8 @@ export default function Index() {
             </Text>
           </Heading>
           <Text color={"gray.500"} maxW={"3xl"}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex ab quasi reprehenderit vel, placeat ducimus maiores velit eius eos, autem odit libero repellat, debitis corrupti ea pariatur quis sapiente magni?
+            Aplikasi yang memungkinkan pengguna untuk membuat, mengedit, dan mengelola daftar tugas atau pekerjaan yang perlu dilakukan sebelum melanjutkan tidur kembali. Ini adalah alat yang sangat berguna dalam mengatur pekerjaan
+            sehari-hari, proyek-proyek, atau bahkan hanya daftar belanjaan.
           </Text>
           <Stack spacing={6} direction={"row"}>
             <Link to={"signup"}>
