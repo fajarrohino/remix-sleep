@@ -1,5 +1,24 @@
 {
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "remix.env.d.ts",
+    "server.ts",
+    "./app/context.tsx",
+    "./app/createEmotionCache.ts",
+    "./app/Document.tsx",
+    "./app/entry.client.tsx",
+    "./app/entry.server.tsx",
+    "./app/root.tsx",
+    "./app/routes/_index.tsx",
+    "./app/routes/_auth.tsx",
+    "./app/routes/_auth.signup.tsx",
+    "./app/routes/_auth.login.tsx",
+    "./app/routes/posts/index.tsx",
+    "./app/routes/posts/component/FormPost.tsx",
+    "./app/routes/modules/auth/auth.schema.ts",
+    "./app/routes/modules/auth/auth.services.ts",
+    "./app/routes/modules/posts/posts.schema.ts",
+    "./app/routes/modules/posts/posts.serveres.ts"
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "isolatedModules": true,
@@ -13,7 +32,24 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": [
+        "./app/context.tsx",
+        "./app/createEmotionCache.ts",
+        "./app/Document.tsx",
+        "./app/entry.client.tsx",
+        "./app/entry.server.tsx",
+        "./app/root.tsx",
+        "./app/routes/_index.tsx",
+        "./app/routes/_auth.tsx",
+        "./app/routes/_auth.signup.tsx",
+        "./app/routes/_auth.login.tsx",
+        "./app/routes/posts/index.tsx",
+        "./app/routes/posts/component/FormPost.tsx",
+        "./app/routes/modules/auth/auth.schema.ts",
+        "./app/routes/modules/auth/auth.services.ts",
+        "./app/routes/modules/posts/posts.schema.ts",
+        "./app/routes/modules/posts/posts.serveres.ts"
+      ]
     },
 
     // Remix takes care of building everything in `remix build`.
